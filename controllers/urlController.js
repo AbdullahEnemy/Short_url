@@ -28,7 +28,7 @@ const createShortUrl = async (req, res) => {
         res.status(500).json({ error: 'Failed to create short URL' });
       }
 }
-const getOrignalUrl= async (req, res) => {
+const getOriginalUrl= async (req, res) => {
     const url =await Url.findOne({ shortCode:req.params.shortCode });
     if(!url){
         return res.status(404).json({ error: 'ShortUrl not found' });
@@ -50,7 +50,7 @@ const getOrignalUrl= async (req, res) => {
         res.status(500).json({ error: 'Failed to Retrive Orignal URL' });
       }
 }
-const urlStatistics= async (req, res) => {
+const getUrlStatistics= async (req, res) => {
     const url =await Url.findOne({ shortCode:req.params.shortCode });
     if(!url){
         return res.status(404).json({ error: 'ShortUrl not found' });
@@ -73,8 +73,8 @@ const urlStatistics= async (req, res) => {
 }
 const urlController = {
     createShortUrl: createShortUrl,
-    getOriginalUrl:getOrignalUrl,
-    urlStatistics:urlStatistics,
+    getOriginalUrl:getOriginalUrl,
+    getUrlStatistics:getUrlStatistics,
 
   };
   
