@@ -9,7 +9,8 @@ const createShortUrl = async (req, res) => {
     let check;
     do{
         shortCode=generateCode();
-        check=await Url.find({shortCode});
+        check = await Url.findOne({ shortCode });
+
     }while(check);
     try {
         const newUrl = new Url({ url, shortCode });
