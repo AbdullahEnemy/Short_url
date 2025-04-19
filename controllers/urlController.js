@@ -52,7 +52,7 @@ const getOrignalUrl= async (req, res) => {
 }
 const urlController = {
     createShortUrl: createShortUrl,
-    getOrignalUrl:getOrignalUrl,
+    getOriginalUrl:getOrignalUrl,
 
   };
   
