@@ -3,7 +3,7 @@ const generateCode = require('../utils/generateCode');
 const createShortUrl = async (req, res) => {
     const {url} =req.body;
     if(!url){
-        return res.status(400).json({ error: 'URL is required' });
+        return res.status(400).json({ error: 'Bad Request' });
     }
     let shortCode;
     let check;
@@ -31,12 +31,12 @@ const createShortUrl = async (req, res) => {
 const getOrignalUrl= async (req, res) => {
     const url =await Url.findOne({ shortCode:req.params.shortCode });
     if(!url){
-        return res.status(400).json({ error: 'ShortUrl not found' });
+        return res.status(404).json({ error: 'ShortUrl not found' });
     }
 
     try {
         url.accessCount++;
-        url.updatedAt=new date();
+        // url.updatedAt=new Date();
         await url.save();
         res.status(201).json({
             id: url._id,
@@ -47,7 +47,7 @@ const getOrignalUrl= async (req, res) => {
             message: "OK"
           });
       } catch (err) {
-        res.status(500).json({ error: 'Failed to create short URL' });
+        res.status(500).json({ error: 'Failed to Retrive Orignal URL' });
       }
 }
 const urlController = {
