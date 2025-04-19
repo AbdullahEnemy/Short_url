@@ -38,7 +38,7 @@ const getOrignalUrl= async (req, res) => {
         url.accessCount++;
         // url.updatedAt=new Date();
         await url.save();
-        res.status(201).json({
+        res.status(200).json({
             id: url._id,
             url: url.url,
             shortCode: url.shortCode,
@@ -50,9 +50,31 @@ const getOrignalUrl= async (req, res) => {
         res.status(500).json({ error: 'Failed to Retrive Orignal URL' });
       }
 }
+const urlStatistics= async (req, res) => {
+    const url =await Url.findOne({ shortCode:req.params.shortCode });
+    if(!url){
+        return res.status(404).json({ error: 'ShortUrl not found' });
+    }
+
+    try {
+
+        res.status(200).json({
+            id: url._id,
+            url: url.url,
+            shortCode: url.shortCode,
+            createdAt: url.createdAt,
+            updatedAt: url.updatedAt,
+            accessCount: url.accessCount,
+            message: "OK"
+          });
+      } catch (err) {
+        res.status(500).json({ error: 'Failed to Retrive Orignal URL' });
+      }
+}
 const urlController = {
     createShortUrl: createShortUrl,
     getOriginalUrl:getOrignalUrl,
+    urlStatistics:urlStatistics,
 
   };
   
