@@ -114,6 +114,7 @@ const urlController = {
     getOriginalUrl:getOriginalUrl,
     getUrlStatistics:getUrlStatistics,
     deleteUrl:deleteUrl,
+    updateUrl:updateUrl
 
   };
   
