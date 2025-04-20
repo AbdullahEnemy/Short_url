@@ -84,6 +84,31 @@ catch (err) {
     res.status(500).json({ error: 'Failed to Delete' });
   }
 }
+const updateUrl=async(req,res)=>{
+    try{
+        const { url: newUrl } = req.body;
+        if (!newUrl) return res.status(400).json({ error: 'Bad Request' });
+        const url = await Url.findOneAndUpdate(
+          { shortCode: req.params.shortCode },
+          { url: newUrl, updatedAt: new Date() },
+          { new: true }
+        );
+        if (!url) return res.status(404).json({ error: 'Short URL not found' });
+        res.status(200).json({
+            id: url._id,
+            url: url.url,
+            shortCode: url.shortCode,
+            createdAt: url.createdAt,
+            updatedAt: url.updatedAt,
+            message: "OK"
+          });
+
+    }
+    catch (err) {
+        res.status(500).json({ error: 'Failed to Update' });
+      }
+
+}
 const urlController = {
     createShortUrl: createShortUrl,
     getOriginalUrl:getOriginalUrl,
