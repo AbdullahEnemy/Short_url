@@ -1,3 +1,4 @@
+
 # 🔗 URL Shortener API
 
 A simple RESTful API built with **Node.js**, **Express.js**, and **MongoDB** that allows users to shorten long URLs, retrieve original URLs, update or delete them, and view access statistics.
@@ -61,6 +62,3 @@ npm run dev
 or
 npm start
 ```
-
-
-
