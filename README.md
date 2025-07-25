@@ -1,61 +1,64 @@
-A URL shortening service built with Node.js and MongoDB. Enter a long URL to get a compact, shareable link—complete with redirection functionality.
 
-# 🚀 Features
-✅ Shorten long URLs and store them in a database
+# 🔗 URL Shortener API
 
-🔄 Redirect users automatically when they visit a short link
+A simple RESTful API built with **Node.js**, **Express.js**, and **MongoDB** that allows users to shorten long URLs, retrieve original URLs, update or delete them, and view access statistics.
+---
+## 📌 Overview
 
-🧬 Node.js + Express backend
+This project is a RESTful API service that allows users to:
+- Create short URLs from long ones
+- Retrieve original URLs using short codes
+- Track how many times a short URL has been accessed
+- Update and delete existing short URLs
 
-💾 MongoDB for persistence
+It uses MongoDB as the database to persist URL data, along with timestamps and access statistics.
 
-# 🔧 Installation
-Clone the repo
+---
 
-git clone https://github.com/AbdullahEnemy/Short_url.git
+## 🧱 Tech Stack
 
-cd Short_url
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB (via Mongoose)
+- **Utilities**: dotenv, cors, nodemon
+- **Tools**: Postman (for API testing)
 
-## Install dependencies
+---
 
+## ✨ Features
+
+- ✅ Shorten long URLs into unique short codes
+- 🔍 Retrieve original URLs
+- ✏️ Update the original URL
+- 🗑️ Delete a short URL
+- 📊 Track number of times a URL is accessed
+
+---
+
+## 🛠 Installation
+
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/your-username/url-shortener-api.git](https://github.com/AbdullahEnemy/Abdullah-innovaxel-Fayyaz.git
+cd url-shortener-api
 npm install
-## Set environment variables
+````
 
-Create a .env file:
+## Environment Variables
 
-MONGO_URI= Your Mongo Url
+Create a .env file in the root directory and add the following:
 
-PORT= Your Port #
+```bash
+PORT=5000
+MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/<your-db-name>?retryWrites=true&w=majority
+```
 
-BASE_URL=http://localhost:3000
+##  Running the Server
 
-## Start the server
+Start the development server:
 
+```bash
+npm run dev
+or
 npm start
-
-Open your browser
-
-Visit http://localhost:3000 to use the app.
-
-# 🧭 How It Works
-You enter a long URL in the frontend form.
-
-The server:
-
-Checks MongoDB to see if it was already shortened.
-
-If not, generates a unique short code (e.g., abc123).
-
-Saves the pair (code + original URL) to MongoDB.
-
-Service returns the short link: BASE_URL/abc123.
-
-Visitors to BASE_URL/abc123 are redirected to the original URL via a server-side lookup.
-
-# 📦 Tech Stack
-Node.js & Express — backend server and routing
-
-Mongoose — MongoDB object modeling
-
-MongoDB — database for URLs
-
+```
