@@ -50,7 +50,7 @@ Create a .env file in the root directory and add the following:
 
 ```bash
 PORT=5000
-MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/<your-db-name>?retryWrites=true&w=majority
+MONGO_URI=<your mongo url>
 ```
 
 ##  Running the Server
